@@ -25,3 +25,47 @@ Welcome to the Meet App! This is a progressive web app that leverages serverless
 With this project, I will work with serverless development, PWA standards, TDD, and data visualization. The Meet App is guiding me through how to develop a maintainable, scalable application that is user-friendly and future-ready.
 
 This project has been an opportunity to practically get into modern web development by creating a real-world application while learning critical skills.
+
+# Features User Stories
+
+- Feature 2: Show/Hide Event Details
+
+As a user,
+I should be able to expand an event to see details
+So that I can get more information about the event without leaving the main list.
+
+As a user,
+I should be able to collapse an event to hide details
+So that I can minimize the amount of information displayed when it’s no longer needed.
+
+- Feature 3: Specify Number of Events
+
+As a user,
+I should be able to view a default of 32 events if I don’t specify a number
+So that I’m not overwhelmed by too many events but still see enough options.
+
+As a user,
+I should be able to change the number of events displayed
+So that I can control how many events I want to browse at a time.
+
+- Feature 4: Use the App When Offline
+
+As a user,
+I should be able to see cached data when there’s no internet connection
+So that I can still access previously viewed events offline.
+
+As a user,
+I should see an error message if I try to change search settings without internet
+So that I understand why my search results are not updating.
+
+- Feature 5: Add an App Shortcut to the Home Screen
+
+As a user,
+I should be able to install the meet app as a shortcut on my device’s home screen
+So that I can access it quickly without navigating through a browser.
+
+- Feature 6: Display Charts Visualizing Event Details
+
+As a user,
+I should be able to see a chart showing the number of upcoming events in each city
+So that I can quickly compare event availability across different cities.
