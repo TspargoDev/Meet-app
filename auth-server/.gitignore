@@ -4,3 +4,4 @@ jspm_packages
 
 # Serverless directories
 .Serverless.yml 
+.Serverless
