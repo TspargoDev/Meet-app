@@ -3,7 +3,4 @@ node_modules
 jspm_packages
 
 # Serverless directories
-.Serverless.yml 
-.Serverless
-
- /auth-server
+.serverless
