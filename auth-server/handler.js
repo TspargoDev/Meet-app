@@ -115,3 +115,11 @@ module.exports.getCalendarEvents = async (event) => {
 			};
 		});
 };
+
+calendar.events.list({
+	calendarId: calendar_id,
+	auth: oAuth2Client,
+	timeMin: new Date().toISOString(),
+	singleEvents: true,
+	orderBy: 'startTime',
+});
