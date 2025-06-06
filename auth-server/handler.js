@@ -107,3 +107,4 @@ module.exports.getCalendarEvents = async (event) => {
 			};
 		});
 };
+console.log("🔍 Generated Google Auth URL:", authUrl);
