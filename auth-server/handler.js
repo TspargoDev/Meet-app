@@ -1,10 +1,10 @@
-const { google } = require('googleapis');
-const calendar = google.calendar('v3');
+const { google } = require("googleapis");
+const calendar = google.calendar("v3");
 const SCOPES = [
-	'https://www.googleapis.com/auth/calendar.events.public.readonly',
+	"https://www.googleapis.com/auth/calendar.events.public.readonly",
 ];
 const { CLIENT_SECRET, CLIENT_ID, CALENDAR_ID } = process.env;
-const redirect_uris = ['https://tspargodev.github.io/Meet-app/'];
+const redirect_uris = ["meet-app-lac.vercel.app"];
 
 const oAuth2Client = new google.auth.OAuth2(
 	CLIENT_ID,
@@ -19,15 +19,15 @@ module.exports.getAuthURL = async () => {
 	 *
 	 */
 	const authUrl = oAuth2Client.generateAuthUrl({
-		access_type: 'offline',
+		access_type: "offline",
 		scope: SCOPES,
 	});
 
 	return {
 		statusCode: 200,
 		headers: {
-			'Access-Control-Allow-Origin': '*',
-			'Access-Control-Allow-Credentials': true,
+			"Access-Control-Allow-Origin": "*",
+			"Access-Control-Allow-Credentials": true,
 		},
 		body: JSON.stringify({
 			authUrl,
@@ -57,8 +57,8 @@ module.exports.getAccessToken = async (event) => {
 			return {
 				statusCode: 200,
 				headers: {
-					'Access-Control-Allow-Origin': '*',
-					'Access-Control-Allow-Credentials': true,
+					"Access-Control-Allow-Origin": "*",
+					"Access-Control-Allow-Credentials": true,
 				},
 				body: JSON.stringify(results),
 			};
@@ -86,7 +86,7 @@ module.exports.getCalendarEvents = async (event) => {
 				auth: oAuth2Client,
 				timeMin: new Date().toISOString(),
 				singleEvents: true,
-				orderBy: 'startTime',
+				orderBy: "startTime",
 			},
 			(error, response) => {
 				if (error) {
@@ -101,8 +101,8 @@ module.exports.getCalendarEvents = async (event) => {
 			return {
 				statusCode: 200,
 				headers: {
-					'Access-Control-Allow-Origin': '*',
-					'Access-Control-Allow-Credentials': true,
+					"Access-Control-Allow-Origin": "*",
+					"Access-Control-Allow-Credentials": true,
 				},
 				body: JSON.stringify({ events: results.data.items }),
 			};
@@ -121,5 +121,5 @@ calendar.events.list({
 	auth: oAuth2Client,
 	timeMin: new Date().toISOString(),
 	singleEvents: true,
-	orderBy: 'startTime',
+	orderBy: "startTime",
 });
