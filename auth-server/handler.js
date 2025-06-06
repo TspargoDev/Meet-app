@@ -21,7 +21,6 @@ module.exports.getAuthURL = async () => {
 	const authUrl = oAuth2Client.generateAuthUrl({
 		access_type: "offline",
 		scope: SCOPES,
-		redirect_uri: redirect_uris[0],
 	});
 
 	return {
