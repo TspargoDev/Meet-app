@@ -21,10 +21,10 @@ module.exports.getAuthURL = async () => {
 	const authUrl = oAuth2Client.generateAuthUrl({
 		access_type: "offline",
 		scope: SCOPES,
-		redirect_uri: redirect_uris[0],
+		redirect_uri: redirect_uris[0], // ✅ Force it to match
 	});
 
-	console.log("Generated Google Auth URL:", authUrl);
+	console.log("🔗 Google Auth URL generated:", authUrl); // ✅ LOG IT
 
 	return {
 		statusCode: 200,
@@ -107,4 +107,3 @@ module.exports.getCalendarEvents = async (event) => {
 			};
 		});
 };
-console.log("🔍 Generated Google Auth URL:", authUrl);
