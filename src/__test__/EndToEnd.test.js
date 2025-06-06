@@ -25,7 +25,7 @@ describe("show/hide event details", () => {
 		expect(eventDetails).toBeDefined();
 	});
 
-	test("User can collapse an event to hide details", async () => {
+	test("User can collapse an event to hide detaials", async () => {
 		await page.click(".event .details-btn");
 		const eventDetails = await page.$(".event .details");
 		expect(eventDetails).toBeNull();
