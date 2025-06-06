@@ -45,12 +45,16 @@ module.exports.getAccessToken = async (event) => {
 		 *  The callback in this case is an arrow function with the results as parameters: “error” and “response”
 		 */
 
-		oAuth2Client.getToken(code, (error, response) => {
-			if (error) {
-				return reject(error);
+		oAuth2Client.getToken(
+			code,
+			{ redirect_uri: redirect_uris[0] },
+			(error, response) => {
+				if (error) {
+					return reject(error);
+				}
+				return resolve(response);
 			}
-			return resolve(response);
-		});
+		);
 	})
 		.then((results) => {
 			// Respond with OAuth token
