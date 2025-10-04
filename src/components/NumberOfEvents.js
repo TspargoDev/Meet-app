@@ -1,32 +1,63 @@
+// src/components/NumberOfEvents/index.js (or NumberOfEvents.jsx)
 import { useState } from "react";
 
 const NumberOfEvents = ({ currentNOE, setCurrentNOE, setErrorAlert }) => {
 	const [number, setNumber] = useState(currentNOE);
 
 	const handleInputChanged = (event) => {
-		const value = event.target.value;
-		setNumber(value);
-		if (isNaN(value) || value <= 0) {
+		const raw = event.target.value;
+
+		// Allow empty string while typing, but show error
+		if (raw === "") {
+			setNumber("");
 			setErrorAlert("Enter a valid number");
-		} else if (value > 32) {
-			setErrorAlert("Only maximum of 32 is allowed");
-		} else {
-			setErrorAlert("");
-			setCurrentNOE(value);
+			return;
 		}
+
+		const value = Number(raw);
+
+		// Non-number or non-finite
+		if (Number.isNaN(value) || !Number.isFinite(value)) {
+			setNumber(raw);
+			setErrorAlert("Enter a valid number");
+			return;
+		}
+
+		// <= 0 invalid
+		if (value <= 0) {
+			setNumber(value);
+			setErrorAlert("Enter a valid number");
+			return;
+		}
+
+		// > 32 invalid
+		if (value > 32) {
+			setNumber(value);
+			setErrorAlert("Only maximum of 32 is allowed");
+			return;
+		}
+
+		// Valid
+		setErrorAlert("");
+		setNumber(value);
+		setCurrentNOE(value);
 	};
 
 	return (
 		<div id="number-of-events">
-			<label>
-				Number of Events:
-				<input
-					type="text"
-					value={number}
-					onChange={handleInputChanged}
-					data-testid="numberOfEventsInput"
-				/>
-			</label>
+			<label htmlFor="number-of-events-input">Number of Events:</label>
+			<input
+				id="number-of-events-input"
+				type="number"
+				min={1}
+				max={32}
+				step={1}
+				value={number}
+				onChange={handleInputChanged}
+				inputMode="numeric"
+				data-testid="numberOfEventsInput"
+				aria-label="number of events input"
+			/>
 		</div>
 	);
 };
