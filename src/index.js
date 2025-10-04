@@ -5,6 +5,8 @@ import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+export { default as ErrorAlert } from "./ErrorAlert";
+export { default as InfoAlert } from "./InfoAlert";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
